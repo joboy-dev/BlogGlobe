@@ -1,0 +1,185 @@
+/* ----------------------- HERO SECTION ----------------------*/
+
+#post-hero::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+#post-hero .content {
+    /* z-index: 1; */
+    position: relative;
+    z-index: 2; /* Place it above the background image */
+    color: var(--white-color); /* Text color on top of the background image */
+    text-align: center;
+    padding: 20px;
+}
+
+#post-hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the overlay color and opacity */
+    z-index: 0; /* Place it between the content and background image */
+}
+
+.post-banner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.post-hero-content {
+    margin: 100px auto;
+    animation: scaleUp 1s ease-in;
+}
+
+.post-hero-content h1 {
+    font-size: 60px;
+}
+
+.post-hero-content h2 {
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+.post-hero-content h4 {
+    font-size: 30px;
+    font-weight: lighter;
+}
+
+#post-content{
+    margin: 40px 20%;
+    font-size: 20px;
+    font-weight: lighter;
+    text-align: justify;
+    animation: moveInFromUp 1s ease-in;
+}
+
+/* POST AUTHOR DETAILS */
+
+.author {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 10vh;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.author .profile-picture {
+    height: 100px;
+    width: 100px;
+    border-radius: 5%;
+    border: 2px solid var(--red-color);
+}
+
+.author .profile-picture img {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    overflow: hidden;
+}
+
+.author .author-details span {
+    color: var(--red-color);
+    font-weight: normal;
+}
+
+.edit-delete-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 40px;
+    padding: 15px 10%;
+    animation: moveInFromRight 1s ease-in;
+}
+
+.edit-delete-buttons a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+    transition: 0.3s ease-in;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.edit-delete-buttons a:hover {
+    scale: 1.05;
+}
+
+
+/* -------------- COMMENTS SECTION ------------------ */
+
+#comments-section {
+    height: 50vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 2% 10%;
+    animation: moveInFromLeft 1s ease-in;
+}
+
+#comments-section p {
+    font-size: 15px;
+}
+
+/* COMMENT DETAILS */
+
+.comment {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 40px;
+    margin: 20px 10%;
+}
+
+.comment .profile-picture {
+    height: 50px;
+    width: 50px;
+    border-radius: 5%;
+    border: 2px solid var(--red-color);
+}
+
+.no-comments {
+    font-weight: bold;
+    margin: 2% 10%;
+}
+
+.comment .profile-picture img {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    overflow: hidden;
+}
+
+.comment .comment-details {
+    width: 80%;
+}
+
+.comment .comment-details span {
+    color: var(--red-color);
+    font-weight: bold;
+}
+
+.comment .comment-details .comment-text {
+    font-weight: normal;
+}
+
+.comment .comment-details .comment-author {
+    font-weight: bold;
+}
+
+.comment .comment-details .comment-date {
+    color: var(--red-color);
+}

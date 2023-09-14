@@ -1,0 +1,106 @@
+#profile-hero {
+    height: 70vh;
+    width: 100%;
+    background-image: url('../../images/contact-bg.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+    position: relative;
+}
+
+#profile-hero::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+#profile-hero .content {
+    /* z-index: 1; */
+    position: relative;
+    z-index: 2; /* Place it above the background image */
+    color: var(--white-color); /* Text color on top of the background image */
+    text-align: center;
+    padding: 20px;
+}
+
+#profile-hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the overlay color and opacity */
+    z-index: 0; /* Place it between the content and background image */
+}
+
+.profile-hero-content {
+    margin: 100px auto;
+    animation: scaleUp 1s ease-in;
+}
+
+.profile-hero-content h1 {
+    font-size: 100px;
+}
+
+#profile-content{
+    height: 30vh;
+    margin: 40px 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 50px;
+    animation: moveInFromUp 1s ease-in;
+}
+
+.profile-details {
+    width: 75%;
+    font-size: 20px;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 40px;
+    padding: 15px 10%;
+    animation: moveInFromRight 1s ease-in;
+}
+
+.hero-buttons a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+    transition: 0.3s ease-in;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.hero-buttons a:hover {
+    scale: 1.05;
+}
+
+.profile-picture {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 20px;
+}
+
+.change-picture-button {
+    background-color: var(--white-color);
+    color: var(--red-color);
+    font-weight: bold;
+    border: none;
+    text-transform: uppercase;
+    font-size: 25px;
+    margin-top: 10px;
+    cursor: pointer;
+}

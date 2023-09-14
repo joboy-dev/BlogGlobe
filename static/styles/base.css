@@ -1,0 +1,174 @@
+:root {
+    --white-color: #fff;
+    --red-color: #DC392D;
+    --gray-color: #818388;
+
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+/* ----------------------- ANIMATIONS ----------------------*/
+@keyframes navbar {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%{
+        scale: 1;
+    }
+
+    100%{
+        scale: 1.05;
+    }
+}
+
+@keyframes scaleUp {
+    0%{
+        opacity: 0;
+        scale: 0;
+    }
+
+    100%{
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes moveInFromUp {
+    0%{
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes moveInFromLeft {
+    0%{
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInFromRight {
+    0%{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ----------------------- NAVBAR STYLES ----------------------*/
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10%;
+    background-color: transparent;
+    color: var(--white-color);
+    animation: navbar 1s ease-in-out;
+}
+
+#navbar .logo a {
+    color: var(--white-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#navbar .logo a span{
+    text-decoration: underline;
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-content p {
+    min-width: 100px;
+    margin-left: 100px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links li a {
+    color: var(--white-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s ease-in;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.nav-links li a:hover {
+    color: var(--red-color);
+}
+
+.burger {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    width: 75px;
+    height: 35px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.invisible {
+    display: none;
+}
+
+.flashes {
+    background-color: var(--white-color);
+    list-style: none;
+    color: var(--red-color);
+    font-weight: bold;
+    font-size: 25px;
+    text-align: left;
+    margin: 2% 0;
+}
+
+
+/* ----------------------- FOOTER ----------------------*/
+footer {
+    text-align: center;
+    background-color: var(--red-color);
+    height: 50px;
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}

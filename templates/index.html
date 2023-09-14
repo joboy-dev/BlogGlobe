@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block page %}Home{% endblock %}
+
+{% block css_links %}
+    <link rel="stylesheet" href="../static/styles/index/index.css" media="screen and (max-width: 2000px)">
+    <link rel="stylesheet" href="../static/styles/index/index.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="../static/styles/index/index.css" media="screen and (max-width: 480px)">
+{% endblock %}
+
+{% block content %}
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="content">
+            {% include 'constants/navbar.html' %}
+
+            <div class="hero-content">
+                <h1><span>Blog</span>Globe</h1>
+                <h4>Where blogging never stops...</h4>
+                
+                {% if not user.is_authenticated %}
+                    <a href="{{url_for('login')}}" class="cta-button">Get Started</a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <!-- END HERO SECTION -->
+
+    <!-- BLOG LIST SECTION -->
+    <section id="blog-list">
+        {% include 'constants/flash_messages.html' %}
+
+        {% if blogs %}
+            {% set blogs_list =  blogs|list %}
+            
+            {% for blog in blogs_list|reverse %}
+                <div class="blog">
+                    <a class="blog-title" href="{{ url_for('getBlog', id=blog.id) }}">{{ blog.title }}</a>
+                    <p class="blog-subtitle">{{ blog.subtitle }}</p>
+                    <p class="attribution">Posted by <b><em>{{ blog.post_author.full_name }}</em></b> on <em>{{ blog.created }}</em></p>
+
+                    <hr color="red">
+                </div>
+            {% endfor %}
+
+                <!-- {% if blogs_list|length > 5 %}
+                    <div class="more-button">
+                        <p>Older Posts  <i class="fa-solid fa-arrow-right"></i></p>
+                    </div>
+                {% endif %} -->
+        {% else %}
+            <div class="no-blog">
+                <p>There are no blog posts yet. Click <a href="{{ url_for('addBlog') }}">here</a> to add yours.</p>
+            </div>
+        {% endif %}
+    </section>
+
+    <!-- END BLOG LIST SECTION -->
+
+    {% include 'constants/footer.html' %}
+
+{% endblock %}
+

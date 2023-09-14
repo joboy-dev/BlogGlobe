@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block page %}My Profile{% endblock %}
+
+{% block css_links %}
+    <link rel="stylesheet" href="../static/styles/profile/profile.css" media="screen and (max-width: 2000px)">
+    <link rel="stylesheet" href="../static/styles/profile/profile.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="../static/styles/profile/profile.css" media="screen and (max-width: 480px)">
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .profile-picture-container {
+            height: 200px;
+            width: 200px;
+            border: 3px solid var(--red-color);
+            border-radius: 5%;
+            overflow: hidden;
+        }
+
+        .profile-picture-container img {
+            height: 100%;
+            width: 100%;
+            object-fit: fill;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <!-- HERO SECTION -->
+    <section id="profile-hero">
+        <div class="content">
+            {% include 'constants/navbar.html' %}
+
+            <div class="hero-buttons">
+                <a href="{{ url_for('editProfile') }}" class="edit"><i class="fa-solid fa-edit"></i>  Edit Profile</a>
+                <a href="{{ url_for('changePassword') }}" class="change-password"><i class="fa-solid fa-lock"></i>  Change Password</a>
+                <a href="{{ url_for('changeProfilePicture') }}" class="change-picture"><i class="fa-solid fa-user"></i>  Change Profile Picture</a>
+            </div>
+            
+            <div class="profile-hero-content">
+                <h1>My Profile</h1>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO SECTION -->
+
+    <!-- BLOG CONTENT -->
+    <section id="profile-content">
+        
+        <div class="profile-picture">
+            <div class="profile-picture-container">
+                <img src="{{ user.profile_picture }}" alt="My profile picture">
+            </div>
+            
+            <!-- <form action="{{ url_for('changeProfilePicture') }}" method="post" class="form" enctype="multipart/form-data">
+                
+                {{ form.hidden_tag() }}
+
+                <div class="form-field">
+                    {{ form.picture.label(style="display: none;") }} 
+                    {{ form.picture(style="display: none;") }}
+                </div>
+                
+                {{ form.submit(style="display: none;") }}
+                
+                <button class="change-picture-button"><i class="fa-solid fa-pencil"></i></button>
+
+                <script>
+                    changePictureButton = document.querySelector('.change-picture-button');
+                    fileUploadButton = document.getElementById('picture');
+                    submitButton = document.getElementById('submit');
+
+                    changePictureButton.addEventListener('click', function() {
+                        fileUploadButton.click();
+                    });
+                    
+                    fileUploadButton.addEventListener('change', function() {
+                        submitButton.click();
+                    });
+                </script>
+            </form> -->
+            
+        </div>
+        
+        <div class="profile-details">
+            {% include 'constants/flash_messages.html' %}
+            <h1>{{ user.full_name }}</h1>
+            <p><b>Username</b>- {{ user.username }}</p>
+            <p><b>Email</b>- {{user.email}}</p><br>
+            <p>Number of posts: <b>{{ user.posts|list|length }}</b></p><br>
+            <hr>
+        </div>
+    </section>
+
+    <!-- END BLOG CONTENT SECTION -->
+    
+    {% include 'constants/footer.html' %}
+    
+
+{% endblock %}
+

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block page %}Edit Blog{% endblock %}
+
+{% block css_links %}
+    <link rel="shortcut icon" href="../../static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../static/styles/base.css">
+    
+    <link rel="stylesheet" href="../../static/styles/form/blog-form.css" media="screen and (max-width: 2000px)">
+    <link rel="stylesheet" href="../../static/styles/form/blog-form.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="../../static/styles/form/blog-form.css" media="screen and (max-width: 480px)">
+{% endblock %}
+
+{% block content %}
+
+    <!-- HERO SECTION -->
+    <section id="blog-form-hero">
+        <div class="content">
+            {% include 'constants/navbar.html' %}
+
+            <div class="blog-form-hero-content">
+                <h1>Edit Blog Post</h1>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO SECTION -->
+
+    <!-- BLOG FORM SECTION -->
+    <section id="form-container">
+        <form action="{{ url_for('editBlog', id=blog.id) }}" method="post" class="form">
+            {% include 'constants/flash_messages.html' %}
+            {{ form.hidden_tag() }}
+
+            <div class="form-field">
+                {{ form.title.label }}
+                {{ form.title }}
+            </div>
+
+            <div class="form-field">
+                {{ form.subtitle.label }}
+                {{ form.subtitle }}
+            </div>
+
+            <div class="form-field">
+                {{ form.image_url.label }}
+                {{ form.image_url }}
+            </div>
+
+            <div class="form-field">
+                {{ form.blog_content.label }}
+                {{ form.blog_content }}
+            </div>
+
+            {{ ckeditor.load() }}
+            {{ ckeditor.config(name='blog_content', width=1000, height=500) }}
+            
+            {{ form.submit }}
+            
+        </form>
+    </section>
+    
+    <!-- END BLOG FORM SECTION -->
+
+    {% include 'constants/footer.html' %}
+
+{% endblock %}
+

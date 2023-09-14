@@ -1,0 +1,139 @@
+/* ----------------------- HERO SECTION ----------------------*/
+#form-hero {
+    height: 70vh;
+    width: 100%;
+    background-image: url('../../images/new-blog-bg.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+    position: relative;
+}
+
+#form-hero::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+#form-hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the overlay color and opacity */
+    z-index: 0; /* Place it between the content and background image */
+}
+
+#form-hero .content {
+    position: relative;
+    z-index: 1; /* Place it above the background image */
+    color: var(--white-color); /* Text color on top of the background image */
+    text-align: center;
+    padding: 20px;
+}
+
+.form-hero-content {
+    margin: 10% auto;
+    animation: scaleUp 1s ease-in;
+}
+
+.form-hero-content h1 {
+    font-size: 100px;
+}
+
+.form{
+    animation: scaleUp 1s ease-in;
+    width: 100%;
+    background-color: var(--white-color);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.form .form-field {
+    margin: 2% 10%;
+    width: 100%;
+    font-size: 20px;
+}
+
+.form .form-field label {
+    display: block;
+    font-size: 20px;
+    margin: 5px;
+    font-weight: bold;
+}
+
+.form input{
+    border: 1px solid var(--red-color);
+    border-radius: 5px;
+    height: 60px;
+    width: 80%;
+}
+
+.form input:focus{
+    border: 1px solid var(--red-color);
+    box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.5);
+    outline: none;
+}
+
+.form input[placeholder]{
+    padding: 0 20px;
+    font-size: 15px;
+}
+
+.form input[value]{
+    padding: 0 20px;
+    font-size: 15px;
+}
+
+.form input[type="submit"]{
+    height: 50px;
+    margin: 10px 10%;
+    width: 10%;
+    background-color: var(--red-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+
+.form input[type="submit"]:hover {
+    scale: 1.02;
+}
+
+.form p {
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 10%;
+}
+
+.form p a {
+    text-decoration: none;
+    color: var(--red-color);
+    transition: 0.3s ease-in;
+    margin-bottom: 10px;
+}
+
+.form p a:hover {
+    text-decoration: underline;
+}
+
+/* Message */
+.message {
+    /* background-color: rgba(255, 0, 0, 0.7); */
+    margin-top: 20px;
+    font-weight: bold;
+    color: rgba(255, 0, 0);
+    text-align: left;
+    border-radius: 10px;
+    animation: moveInFromRight 0.5s ease-in;
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogGlobe- {% block page %}{% endblock %}</title>
+    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static/styles/base.css">
+    {% block css_links %}{% endblock %}
+    {% block styles %}{% endblock %}
+    
+    <script src="https://kit.fontawesome.com/e883737a77.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    {% block content %}{% endblock %}
+    
+</body>
+</html>

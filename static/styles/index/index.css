@@ -1,0 +1,178 @@
+/* ----------------------- HERO SECTION ----------------------*/
+#hero {
+    height: 70vh;
+    width: 100%;
+    background-image: url('../../images/home-bg.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+    position: relative;
+}
+
+#hero::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+#hero .content {
+    /* z-index: 1; */
+    position: relative;
+    z-index: 1; /* Place it above the background image */
+    color: var(--white-color); /* Text color on top of the background image */
+    text-align: center;
+    padding: 20px;
+}
+
+#hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the overlay color and opacity */
+    z-index: 0; /* Place it between the content and background image */
+}
+
+.hero-content {
+    margin: 100px auto;
+    animation: scaleUp 1s ease-in;
+}
+
+.hero-content h1 {
+    font-size: 100px;
+}
+
+.hero-content h1 span {
+    text-decoration: underline;
+}
+
+.hero-content h4 {
+    font-size: 40px;
+    font-weight: normal;
+}
+
+.hero-content .cta-button {
+    color: var(--white-color);
+    background-color: var(--red-color);
+    text-decoration: none;
+    font-size: 25px;
+    padding: 10px;
+    display: inline-block;
+    margin-top: 30px;
+    border-radius: 10px;
+    transition: 0.3s ease-in;
+}
+
+.hero-content .cta-button:hover {
+    scale: 1.1;
+}
+
+/* ----------------------- BLOG LIST ----------------------*/
+#blog-list {
+    margin: 40px 20%;
+    height: 75vh;
+    overflow-y: auto;
+}
+
+#blog-list .blog{
+    padding: 10px;
+    position: relative;
+    animation: moveInFromLeft 1s ease-in;
+}
+
+.blog-title{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.blog-title:hover{
+    color: var(--red-color);
+}
+
+.blog-subtitle{
+    color: black;
+    font-weight: lighter;
+    font-size: 30px;
+}
+
+.no-blog {
+    text-align: center;
+    height: 300px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.no-blog a {
+    text-decoration: none;
+    color: var(--red-color);
+}
+
+.attribution{
+    color: var(--gray-color);
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: lighter;
+}
+
+.more-button {
+    color: var(--white-color);
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    text-transform: uppercase;
+    background-color: var(--red-color);
+    height: 60px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+
+.more-button::after{
+    clear: both;
+}
+
+.more-button:hover {
+    scale: 1.1;
+}
+
+.blog-visible {
+    display: block;
+}
+
+.edit-delete-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 40px;
+    animation: moveInFromRight 1s ease-in;
+    margin-bottom: 20px;
+}
+
+.edit-delete-buttons a {
+    text-decoration: none;
+    color: var(--red-color);
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+    transition: 0.3s ease-in;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.edit-delete-buttons a:hover {
+    scale: 1.05;
+}

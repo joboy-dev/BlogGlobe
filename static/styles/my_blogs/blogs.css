@@ -1,0 +1,55 @@
+/* ----------------------- HERO SECTION ----------------------*/
+#blog-hero {
+    height: 70vh;
+    width: 100%;
+    background-image: url('../../images/post-bg.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+    position: relative;
+}
+
+#blog-hero::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+#blog-hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the overlay color and opacity */
+    z-index: 0; /* Place it between the content and background image */
+}
+
+#blog-hero .content {
+    position: relative;
+    z-index: 1; /* Place it above the background image */
+    color: var(--white-color); /* Text color on top of the background image */
+    text-align: center;
+    padding: 20px;
+}
+
+.blog-hero-content {
+    margin: 10% auto;
+    animation: scaleUp 1s ease-in;
+}
+
+.blog-hero-content h1 {
+    font-size: 100px;
+}
+
+.blog-hero-content h4 {
+    font-size: 40px;
+    font-weight: normal;
+}
+

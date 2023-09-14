@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block page %}Edit Profile{% endblock %}
+
+{% block css_links %}
+    <link rel="stylesheet" href="../../static/styles/form/form.css" media="screen and (max-width: 2000px)">
+{% endblock %}
+
+{% block styles %}
+    <style>
+        #form-hero {
+            height: 70vh;
+            width: 100%;
+            background-image: url('../../static/images/edit-bg.jpg');
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: 0% 50%;
+            position: relative;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!-- HERO SECTION -->
+    <section id="form-hero">
+        <div class="content">
+            {% include 'constants/navbar.html' %}
+
+            <div class="form-hero-content">
+                <h1>Edit Profile</h1>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO SECTION -->
+
+    <!-- SIGNUP SECTION -->
+    <section id="form-container">
+        <form action="{{ url_for('editProfile') }}" method="post" class="form">
+            {% include 'constants/flash_messages.html' %}
+            {{ form.hidden_tag() }}
+            
+            <div class="form-field">
+                {{ form.full_name.label }} 
+                {{ form.full_name }}
+            </div>
+
+            <div class="form-field">
+                {{ form.username.label }} 
+                {{ form.username }}
+            </div>
+
+            <div class="form-field">
+                {{ form.email.label }} 
+                {{ form.email }}
+            </div>
+            
+            {{ form.submit }}
+
+        </form>
+    </section>
+    <!-- END SIGNUP SECTION -->
+    
+    {% include 'constants/footer.html' %}
+
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block page %}{{ blog.title }}{% endblock %}
+
+{% block css_links %}
+    <link rel="stylesheet" href="../static/styles/blog_content/blog.css" media="screen and (max-width: 2000px)">
+    <link rel="stylesheet" href="../static/styles/blog_content/blog.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="../static/styles/blog_content/blog.css" media="screen and (max-width: 480px)">
+
+    <link rel="stylesheet" href="../../static/styles/form/form.css" media="screen and (max-width: 2000px)">
+
+{% endblock %}
+
+{% block styles %}
+    <style>
+        #post-hero {
+            height: 70vh;
+            width: 100%;
+            background-image: url('{{ blog.image_url }}');
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: 0% 50%;
+            position: relative;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- HERO SECTION -->
+    <section id="post-hero">
+        <div class="content">
+            {% include 'constants/navbar.html' %}
+            
+            {% if blog.author_id == user.id %}
+                <div class="edit-delete-buttons">
+                    <a href="{{ url_for('editBlog', id=blog.id )}}" class="edit"><i class="fa-solid fa-pencil"></i>  Edit</a>
+                    <a href="{{ url_for('deleteBlog', id=blog.id )}}" class="delete"><i class="fa-solid fa-trash"></i>  Delete</a>
+                </div>
+            {% endif %}
+            
+            <div class="post-hero-content">
+                <h1>{{ blog.title }}</h1>
+                <h2>{{ blog.subtitle }}</h2>
+                <h4>Posted on {{ blog.created }}</h4>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO SECTION -->
+
+    <!-- BLOG CONTENT -->
+    <section id="post-content">
+        {% include 'constants/flash_messages.html' %}
+
+        <div class="author">
+            <div class="profile-picture">
+                <img src="../../{{ blog.post_author.profile_picture }}" alt="{{ blog.post_author.full_name }}'s' Profile Picture">
+            </div>
+            <div class="author-details">
+                <p><b>Author: </b><span>{{ blog.post_author.full_name }}</span></p>
+                <p><b>Last updated: </b><span>{{ blog.updated }}</span></p>
+            </div>
+        </div>
+        {{ blog.blog_content|safe }}
+    </section>
+    <!-- END BLOG CONTENT SECTION -->
+
+    <hr>
+    
+    <!-- COMMENTS SECTION -->
+    <section id="comments-section">
+        {% if user.is_authenticated %}
+            <form action="{{ url_for('addComment', id=blog.id) }}" method="post" class="form">
+
+                {{ form.hidden_tag() }}
+                
+                <div class="form-field">
+                    {{ form.comment.label }}
+                    {{ form.comment }}
+                </div>
+                                
+                {{ form.submit }}
+            </form>
+
+            <!-- People's comments -->
+            {% if not blog.comments %}
+                <p class="no-comments">No comments yet. Add a comment.</p>
+            {% else %}
+                {% for comment in blog.comments %}
+                    <div class="comment">
+                        <div class="profile-picture">
+                            <img src="../../{{ comment.comment_author.profile_picture }}" alt="{{ comment.comment_author.full_name }}'s' Profile Picture">
+                        </div>
+                        <div class="comment-details">
+                            <p class="comment-author">{{ comment.comment_author.full_name }} (<span>{{ comment.comment_author.username }}</span>)</p>
+                            <p class="comment-text">{{ comment.comment }}</p>
+                            <p class="comment-date">{{ comment.created }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% else %}
+            <p class="no-comments">You must login to have access to the comments section.</p>
+        {% endif %}
+
+    </section>
+    <!-- END COMMENTS SECTION -->
+
+    {% include 'constants/footer.html' %}
+
+
+{% endblock %}
+
