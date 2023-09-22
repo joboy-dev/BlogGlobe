@@ -8,7 +8,7 @@ class HomeView(View):
     def dispatch_request(self):
         # Get request to get all blogs
         blogs = session.query(Blog).all()
-        return render_template('index.html', blogs=blogs, user=current_user)
+        return render_template('index.html', blogs=blogs, user=current_user, active_link='home')
     
 app.add_url_rule('/', view_func=HomeView.as_view(name='home'))
 
@@ -64,7 +64,7 @@ class SignUpView(View):
                     flash('You have successfully signed up')
                     return redirect(url_for('home'))
 
-        return render_template('forms/signup.html', form=form, message=message, user=current_user)
+        return render_template('forms/signup.html', form=form, message=message, user=current_user, active_link='signup')
     
 app.add_url_rule('/signup', view_func=SignUpView.as_view(name='signup'))
 
@@ -97,7 +97,7 @@ class LoginView(View):
             else:
                 message = 'Account does not exist.'
             
-        return render_template('forms/login.html', message=message, form=form, user=current_user)
+        return render_template('forms/login.html', message=message, form=form, user=current_user, active_link='login')
     
 app.add_url_rule('/login', view_func=LoginView.as_view(name='login'))
 
@@ -128,7 +128,7 @@ class GetUserDetailsView(View):
             flash('Profile picture updated')
             return redirect(url_for('getUserDetails'))
         
-        return render_template('profile.html', user=current_user, form=change_picture_form)
+        return render_template('profile.html', user=current_user, form=change_picture_form, active_link='profile')
 
 app.add_url_rule('/profile', view_func=GetUserDetailsView.as_view(name='getUserDetails'))
 
@@ -152,7 +152,7 @@ class EditProfileView(View):
             flash('Profile changes saved')
             return redirect(url_for('getUserDetails'))
     
-        return render_template('forms/edit-profile.html', form=form, user=current_user, message=message)
+        return render_template('forms/edit-profile.html', form=form, user=current_user, message=message, active_link='profile')
     
 app.add_url_rule('/profile/edit', view_func=EditProfileView.as_view(name='editProfile'))
 
@@ -190,7 +190,7 @@ class ChangePasswordView(View):
                     flash('Password changed successfully.')
                     return redirect(url_for('getUserDetails'))
                     
-        return render_template('forms/change-password.html', form=form, user=current_user, message=message)
+        return render_template('forms/change-password.html', form=form, user=current_user, message=message, active_link='profile')
         
     
 app.add_url_rule('/profile/change-password', view_func=ChangePasswordView.as_view(name='changePassword'))
@@ -232,7 +232,7 @@ class ChangeProfilePictureView(View):
                 flash('Profile picture updated')
                 return redirect(url_for('getUserDetails'))
         
-        return render_template('forms/change-profile-picture.html', form=form, user=current_user)
+        return render_template('forms/change-profile-picture.html', form=form, user=current_user, active_link='profile')
     
 app.add_url_rule('/profile/change-profile-picture', view_func=ChangeProfilePictureView.as_view(name='changeProfilePicture'))
 
@@ -253,7 +253,7 @@ class GetUserBlogsView(View):
         # Check database for blogs for the current logged in user
         user_blogs = session.query(Blog).filter_by(author_id=current_user.id).all()
         
-        return render_template('my-blogs.html', user_blogs=user_blogs, user=current_user)
+        return render_template('my-blogs.html', user_blogs=user_blogs, user=current_user, active_link='myblogs')
 
 app.add_url_rule('/myblogs', view_func=GetUserBlogsView.as_view(name='getUserBlogs'))
 
@@ -291,7 +291,7 @@ class AddBlogView(View):
         
         messages = form.form_errors
         print(messages)
-        return render_template('forms/add-blog.html', form=form, user=current_user)
+        return render_template('forms/add-blog.html', form=form, user=current_user, active_link='addblog')
     
 app.add_url_rule('/addBlog', view_func=AddBlogView.as_view(name='addBlog'))
 
@@ -322,7 +322,7 @@ class EditBlogView(View):
                 message = 'You cannot edit another user\'s post'
                 return abort(code=401)
             
-        return render_template('forms/edit-blog.html', form=form, blog=blog, user=current_user, message=message)
+        return render_template('forms/edit-blog.html', form=form, blog=blog, user=current_user, message=message, active_link='myblogs')
     
 app.add_url_rule('/blog/<int:id>/edit', view_func=EditBlogView.as_view(name='editBlog'))
 

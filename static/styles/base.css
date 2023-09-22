@@ -82,6 +82,19 @@
     }
 }
 
+/* SCROLL BAR */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--gray-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--red-color);
+}
+
 /* ----------------------- NAVBAR STYLES ----------------------*/
 #navbar {
     display: flex;
@@ -132,6 +145,11 @@
 }
 
 .nav-links li a:hover {
+    color: var(--red-color);
+}
+
+.nav-links li a.active {
+    font-size: 20px;
     color: var(--red-color);
 }
 

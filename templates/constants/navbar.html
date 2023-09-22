@@ -6,17 +6,17 @@
 
     <div class="nav-content">
         <ul class="nav-links">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('home') }}" class="{% if active_link == 'home' %}active{% endif %}">Home</a></li>
             
             {% if user.is_authenticated %}
-                <li><a href="{{ url_for('getUserBlogs') }}">My Blogs</a></li>
-                <li><i class="fa-solid fa-plus fa-beat"></i>  <a href="{{ url_for('addBlog') }}">Add Blog</a></li>
-                <li><a href="{{ url_for('getUserDetails') }}">My Profile</a></li>
+                <li><a href="{{ url_for('getUserBlogs') }}" class="{% if active_link == 'myblogs' %}active{% endif %}">My Blogs</a></li>
+                <li><i class="fa-solid fa-plus fa-beat"></i>  <a href="{{ url_for('addBlog') }}" class="{% if active_link == 'addblog' %}active{% endif %}">Add Blog</a></li>
+                <li><a href="{{ url_for('getUserDetails') }}" class="{% if active_link == 'profile' %}active{% endif %}">My Profile</a></li>
                 <p>Logged in as <b>{{ user.username }}</b></p>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             {% else %}
-                <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
-                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('signup') }}" class="{% if active_link == 'signup' %}active{% endif %}">Sign Up</a></li>
+                <li><a href="{{ url_for('login') }}" class="{% if active_link == 'login' %}active{% endif %}">Login</a></li>
             {% endif %}
         </ul>
 
