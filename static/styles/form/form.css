@@ -54,6 +54,7 @@
     background-color: var(--white-color);
     border-radius: 20px;
     overflow: hidden;
+    margin-bottom: 40px;
 }
 
 .form .form-field {
