@@ -13,6 +13,7 @@ from flask_login import LoginManager, login_required, login_url, logout_user, lo
 # from flask_uploads import UploadSet, configure_uploads, IMAGES
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
+from whitenoise import WhiteNoise
 
 from dotenv import load_dotenv
 from pathlib import Path
@@ -45,6 +46,9 @@ login_manager.init_app(app)
 # setting up file_upload
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app.config['UPLOAD_FOLDER'] = f'static/media/profile_pictures'
+
+# configuring whitenoise for static files
+app.wsgi_app = WhiteNoise(app.wsgi_app, root='static/')
 
 def allowed_file(filename):
     '''Function to check if a file is allowed'''
