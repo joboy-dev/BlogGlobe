@@ -22,7 +22,7 @@ import smtplib
 
 from email_password_regex_check import is_valid_password
 from WTF_Forms.user_forms import SignUpForm, EditProfileForm, LoginForm, ChangeProfilePictureForm, ChangePasswordForm
-from WTF_Forms.blog_forms import AddBlogForm, EditBlogFrom, AddCommentForm
+from WTF_Forms.blog_forms import AddBlogForm, EditBlogFrom, AddCommentForm, SearchByAuthorForm, SearchByBlogTitleForm
 import models
 from models import Blog, User, Comment
 

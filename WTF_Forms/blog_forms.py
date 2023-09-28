@@ -74,4 +74,26 @@ class AddCommentForm(FlaskForm):
         render_kw={'value':'Add Comment'}
     )
     
+
+class SearchByAuthorForm(FlaskForm):
+    '''Form to search for a blog by authors'''
     
+    author = fields.SearchField(
+        render_kw={'placeholder': 'Search by author', 'required': True}
+    )
+    
+    submit = fields.SubmitField(
+        render_kw={'value':'Search'}
+    )
+    
+
+class SearchByBlogTitleForm(FlaskForm):
+    '''Form to search for a blog by its name'''
+    
+    blog_title = fields.SearchField(
+        render_kw={'placeholder': 'Search by blog title', 'required': True}
+    )
+    
+    submit = fields.SubmitField(
+        render_kw={'value':'Search'}
+    )

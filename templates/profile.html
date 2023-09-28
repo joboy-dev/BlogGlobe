@@ -54,34 +54,6 @@
                 <img src="{{ user.profile_picture }}" alt="My profile picture">
             </div>
             
-            <!-- <form action="{{ url_for('changeProfilePicture') }}" method="post" class="form" enctype="multipart/form-data">
-                
-                {{ form.hidden_tag() }}
-
-                <div class="form-field">
-                    {{ form.picture.label(style="display: none;") }} 
-                    {{ form.picture(style="display: none;") }}
-                </div>
-                
-                {{ form.submit(style="display: none;") }}
-                
-                <button class="change-picture-button"><i class="fa-solid fa-pencil"></i></button>
-
-                <script>
-                    changePictureButton = document.querySelector('.change-picture-button');
-                    fileUploadButton = document.getElementById('picture');
-                    submitButton = document.getElementById('submit');
-
-                    changePictureButton.addEventListener('click', function() {
-                        fileUploadButton.click();
-                    });
-                    
-                    fileUploadButton.addEventListener('change', function() {
-                        submitButton.click();
-                    });
-                </script>
-            </form> -->
-            
         </div>
         
         <div class="profile-details">

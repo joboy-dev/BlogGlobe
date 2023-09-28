@@ -91,7 +91,7 @@
     text-decoration: none;
     color: black;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .blog-title:hover{
@@ -101,7 +101,7 @@
 .blog-subtitle{
     color: black;
     font-weight: lighter;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .no-blog {

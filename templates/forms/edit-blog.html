@@ -6,19 +6,33 @@
     <link rel="shortcut icon" href="../../static/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../../static/styles/base.css">
     
-    <link rel="stylesheet" href="../../static/styles/form/blog-form.css" media="screen and (max-width: 2000px)">
-    <link rel="stylesheet" href="../../static/styles/form/blog-form.css" media="screen and (max-width: 768px)">
-    <link rel="stylesheet" href="../../static/styles/form/blog-form.css" media="screen and (max-width: 480px)">
+    <link rel="stylesheet" href="../../static/styles/form/form.css" media="screen and (max-width: 2000px)">
+    <link rel="stylesheet" href="../../static/styles/form/form.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="../../static/styles/form/form.css" media="screen and (max-width: 480px)">
+{% endblock %}
+
+{% block styles %}
+    <style>
+        #form-hero {
+            height: 70vh;
+            width: 100%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(80, 80, 80, 0.5)), url('../../static/images/new-blog-bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
 
     <!-- HERO SECTION -->
-    <section id="blog-form-hero">
+    <section id="form-hero">
         <div class="content">
             {% include 'constants/navbar.html' %}
 
-            <div class="blog-form-hero-content">
+            <div class="form-hero-content">
                 <h1>Edit Blog Post</h1>
             </div>
         </div>

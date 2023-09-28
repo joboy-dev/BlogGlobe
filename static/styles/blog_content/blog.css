@@ -1,16 +1,4 @@
 /* ----------------------- HERO SECTION ----------------------*/
-
-#post-hero::before {
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: -1;
-}
-
 #post-hero .content {
     /* z-index: 1; */
     position: relative;
@@ -18,17 +6,6 @@
     color: var(--white-color); /* Text color on top of the background image */
     text-align: center;
     padding: 20px;
-}
-
-#post-hero::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Adjust the overlay color and opacity */
-    z-index: 0; /* Place it between the content and background image */
 }
 
 .post-banner {
@@ -43,22 +20,22 @@
 }
 
 .post-hero-content h1 {
-    font-size: 60px;
+    font-size: 2rem;
 }
 
 .post-hero-content h2 {
-    font-size: 40px;
+    font-size: 1.5rem;
     font-weight: lighter;
 }
 
 .post-hero-content h4 {
-    font-size: 30px;
+    font-size: 1rem;
     font-weight: lighter;
 }
 
 #post-content{
     margin: 40px 20%;
-    font-size: 20px;
+    font-size: 0.7rem;
     font-weight: lighter;
     text-align: justify;
     animation: moveInFromUp 1s ease-in;
@@ -106,7 +83,7 @@
 .edit-delete-buttons a {
     text-decoration: none;
     color: white;
-    font-size: 15px;
+    font-size: 0.5rem;
     background-color: transparent;
     border: none;
     transition: 0.3s ease-in;
@@ -130,7 +107,7 @@
 }
 
 #comments-section p {
-    font-size: 15px;
+    font-size: 0.5rem;
 }
 
 /* COMMENT DETAILS */

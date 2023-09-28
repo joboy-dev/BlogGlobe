@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="../static/styles/index/index.css" media="screen and (max-width: 2000px)">
     <link rel="stylesheet" href="../static/styles/index/index.css" media="screen and (max-width: 768px)">
     <link rel="stylesheet" href="../static/styles/index/index.css" media="screen and (max-width: 480px)">
+
+    <link rel="stylesheet" href="../../static/styles/form/form.css" media="screen and (max-width: 4000px)">
+    <link rel="stylesheet" href="../../static/styles/form/form.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="../../static/styles/form/form.css" media="screen and (max-width: 480px)">
 {% endblock %}
 
 {% block content %}
@@ -27,6 +31,14 @@
     </section>
     <!-- END HERO SECTION -->
 
+    <form class="search-form" action="{{ url_for('home') }}", method="post">
+        {{ form.hidden_tag() }}
+        
+        <div class="search-field">
+            {{ form.author }}
+            {{ form.submit }}
+        </div>
+    </form>
     <!-- BLOG LIST SECTION -->
     <section id="blog-list">
         {% include 'constants/flash_messages.html' %}

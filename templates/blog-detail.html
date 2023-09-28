@@ -16,7 +16,7 @@
         #post-hero {
             height: 70vh;
             width: 100%;
-            background-image: url('{{ blog.image_url }}');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(80, 80, 80, 0.5)), url('{{ blog.image_url }}');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -55,7 +55,7 @@
 
         <div class="author">
             <div class="profile-picture">
-                <img src="../../{{ blog.post_author.profile_picture }}" alt="{{ blog.post_author.full_name }}'s' Profile Picture">
+                <img src="../../{{ blog.post_author.profile_picture }}" loading="lazy" alt="{{ blog.post_author.full_name }}'s' Profile Picture">
             </div>
             <div class="author-details">
                 <p><b>Author: </b><span>{{ blog.post_author.full_name }}</span></p>
@@ -93,7 +93,11 @@
                             <img src="../../{{ comment.comment_author.profile_picture }}" alt="{{ comment.comment_author.full_name }}'s' Profile Picture">
                         </div>
                         <div class="comment-details">
-                            <p class="comment-author">{{ comment.comment_author.full_name }} (<span>{{ comment.comment_author.username }}</span>)</p>
+                            {% if comment.comment_author.id == user.id %}
+                                <p class="comment-author">You (<span>{{ comment.comment_author.username }}</span>)</p>
+                            {% else %}
+                                <p class="comment-author">{{ comment.comment_author.full_name }} (<span>{{ comment.comment_author.username }}</span>)</p>
+                            {% endif %}
                             <p class="comment-text">{{ comment.comment }}</p>
                             <p class="comment-date">{{ comment.created }}</p>
                         </div>

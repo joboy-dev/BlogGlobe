@@ -7,10 +7,27 @@ year = datetime.now().year
 class HomeView(View):
     '''Hone view to get all blogs from the database'''
     
+    methods = ['GET', 'POST']
+    
     def dispatch_request(self):
+        form = SearchByAuthorForm(request.form)
+        
+        if request.method == 'POST' and form.validate_on_submit():
+            user = session.query(User).filter_by(full_name=form.author.data).first()
+            if user:
+                blogs = session.query(Blog).filter_by(author_id=user.id)
+                if blogs.count() > 1:
+                    flash(f"{blogs.count()} blog posts found for {form.author.data}")
+                else:
+                    flash(f"{blogs.count()} blog post found for {form.author.data}")
+                    
+                return render_template('index.html', blogs=blogs, user=current_user, active_link='home', year=year, form=form)
+            else:
+                flash('There are no blog posts for this user.')
+            
         # Get request to get all blogs
         blogs = session.query(Blog).all()
-        return render_template('index.html', blogs=blogs, user=current_user, active_link='home', year=year)
+        return render_template('index.html', blogs=blogs, user=current_user, active_link='home', year=year, form=form)
     
 app.add_url_rule('/', view_func=HomeView.as_view(name='home'))
 
@@ -248,13 +265,23 @@ app.add_url_rule('/profile/change-profile-picture', view_func=ChangeProfilePictu
 class GetUserBlogsView(View):
     '''View to get blog posts of current logged in user'''
     
+    methods = ['GET', 'POST']
     decorators = [login_required]
     
     def dispatch_request(self):
-        print(current_user.id)
+        form = SearchByBlogTitleForm(request.form)
+        
+        if request.method == 'POST' and form.validate_on_submit():
+            user_blogs = session.query(Blog).filter_by(author_id=current_user.id, title=form.blog_title.data).all()
+            
+            if user_blogs:
+                flash(f"Blog '{form.blog_title.data}' found")
+                return render_template('my-blogs.html', user_blogs=user_blogs, user=current_user, active_link='myblogs', year=year)
+            else:
+                flash(f"Blog '{form.blog_title.data}' does not exist")
+        
         # Check database for blogs for the current logged in user
         user_blogs = session.query(Blog).filter_by(author_id=current_user.id).all()
-        
         return render_template('my-blogs.html', user_blogs=user_blogs, user=current_user, active_link='myblogs', year=year)
 
 app.add_url_rule('/myblogs', view_func=GetUserBlogsView.as_view(name='getUserBlogs'))
