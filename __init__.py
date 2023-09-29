@@ -26,6 +26,19 @@ from WTF_Forms.blog_forms import AddBlogForm, EditBlogFrom, AddCommentForm, Sear
 import models
 from models import Blog, User, Comment
 
+# from pymongo.mongo_client import MongoClient
+# from pymongo.server_api import ServerApi
+
+# uri = "mongodb+srv://josephkorede36:Korede036@cluster0.y8hkcjc.mongodb.net/?retryWrites=true&w=majority"
+# # Create a new client and connect to the server
+# client = MongoClient(uri, server_api=ServerApi('1'))
+# # Send a ping to confirm a successful connection
+# try:
+#     client.admin.command('ping')
+#     print("Pinged your deployment. You successfully connected to MongoDB!")
+# except Exception as e:
+#     print(e)
+
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(os.path.join(BASE_DIR, ".env"))
 
@@ -59,7 +72,7 @@ def allowed_file(filename):
 # ----------------------- DATABASE CONFIG ------------------------- #
 
 database = models.db
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog_app.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost/blogglobe_db'
 database.init_app(app)
 
 # crate all tables
